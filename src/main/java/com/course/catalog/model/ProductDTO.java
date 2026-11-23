@@ -1,6 +1,7 @@
 package com.course.catalog.model;
+import java.io.Serializable;
 
-public class ProductDTO {
+public class ProductDTO implements Serializable {
     private Long id;
     private String name;
     private String category;
