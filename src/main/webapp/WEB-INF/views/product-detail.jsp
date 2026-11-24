@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: bara
-  Date: 11/3/26
-  Time: 2:38 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
@@ -18,5 +11,18 @@
     <input type="hidden" name="productId" value="${product.id}">
     <button type="submit">Add to cart</button>
 </form>
+
+<h3>Reviews</h3>
+
+<c:if test="${empty reviews}">
+    <p>No reviews yet.</p>
+</c:if>
+
+<c:forEach var="review" items="${reviews}">
+    <div class="review">
+        <strong>${review.rating} / 5</strong>
+        <p><c:out value="${review.comment}"/></p>
+    </div>
+</c:forEach>
 
 <jsp:include page="footer.jsp" />

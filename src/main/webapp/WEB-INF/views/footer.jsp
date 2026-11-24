@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   </main>
   <footer style="padding: 24px; color: #777;">
-    Jakarta EE Course, Lab 2
+    Jakarta EE Course, Lab 4
   </footer>
   </body>
 </html>
