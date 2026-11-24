@@ -104,9 +104,9 @@ Java 21, Jakarta EE 11 API (Servlet 6.1, EJB, CDI, Transactions, JPA 3.2), Hiber
    ```
 3. **Lab 4 and later: register the datasource in WildFly before deploying.** Otherwise the deployment fails because `java:jboss/datasources/CatalogDS` does not exist. With WildFly running:
    ```bash
-   $WILDFLY_HOME/bin/jboss-cli.sh --connect --command='data-source add --name=CatalogDS --jndi-name=java:jboss/datasources/CatalogDS --driver-name=h2 --connection-url="jdbc:h2:mem:catalog;DB_CLOSE_DELAY=-1" --user-name=sa --password=sa'
+   $WILDFLY_HOME/bin/jboss-cli.sh --connect --command='data-source add --name=CatalogDS --jndi-name=java:jboss/datasources/CatalogDS --driver-name=h2 --connection-url="jdbc:h2:file:~/catalogdb" --user-name=sa --password=sa'
    ```
-   This only needs to be done once, because it is saved in `standalone.xml`. It is an in-memory database, so data is reset on every restart and re-seeded from `import.sql`.
+   This only needs to be done once, because it is saved in `standalone.xml`. The tables are dropped and recreated from `import.sql` on every deployment because `hibernate.hbm2ddl.auto=create`.
 4. Deploy `target/jakartaee-course.war` to WildFly or Payara, or run it from IntelliJ with a server run configuration.
 5. Open:
    - Lab 1: `http://localhost:8080/jakartaee-course/hello`
